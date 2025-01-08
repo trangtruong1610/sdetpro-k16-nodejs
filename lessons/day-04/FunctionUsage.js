@@ -1,10 +1,10 @@
 // . dot notation
-// const UtilMethods = require('./UtilMethods');
+// const UtilMethods = require('../../utils/UtilMethods');
 // let isEvenNumber_ = UtilMethods.isEventNumber(4);
 // console.log(`Is even number : ${isEvenNumber_}`);
 
 // Destructure
-const {isEventNumber, isOddNumber} = require('./UtilMethods');
+const {isEventNumber, isOddNumber} = require('../../utils/UtilMethods');
 const readline = require("readline-sync");
 
 // import {isEventNumber} from "./UtilMethods";

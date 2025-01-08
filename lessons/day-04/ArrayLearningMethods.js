@@ -1,4 +1,4 @@
-const {isOddNumber} = require("./UtilMethods") ;
+const {isOddNumber} = require("../../utils/UtilMethods") ;
 
 let myArray = [1, 2, 3, 4, 5];
 
