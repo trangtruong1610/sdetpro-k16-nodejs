@@ -1,8 +1,8 @@
 const readline = require('readline-sync');
 
 
-let arrivalTime = readline.question("Arrival Time: ");
-let isHeOnTime = (arrivalTime == 7);
+let arrivalTime = Number(readline.question("Arrival Time: "));
+let isHeOnTime = (arrivalTime === 7);
 
 if (isHeOnTime) {
   console.log("let's talk");
