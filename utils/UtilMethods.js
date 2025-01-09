@@ -37,7 +37,7 @@ function findMinNumber(array) {
     return isMinNumber;
 }
 
-function sortMinToMax(array) {
+function sortArrayMinToMax(array) {
     for (let i = 0; i < array.length; i++) {
         for (let j = i + 1; j < array.length; j++) {
             if (array[i] > array[j]) { // nếu số ờ vị trí i(trước) mà lớn hơn số ở vị trí j(sau)
@@ -51,7 +51,7 @@ function sortMinToMax(array) {
     return array;
 }
 
-function sortMaxToMin(array) {
+function sortArrayMaxToMin(array) {
     for (let i = 0; i < array.length; i++) {
         for (let j = i + 1; j < array.length; j++) {
             if (array[i] < array[j]) { // nếu số ờ vị trí i(trước) mà nhỏ hơn số ở vị trí j(sau)
