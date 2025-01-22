@@ -1,4 +1,4 @@
-const {getUserInput} = require("../../utils/UtilMethods");
+const {getUserNumber} = require("../../utils/UtilMethods");
 
 let i = 0;
 for (; i < 5; i++) {
@@ -12,7 +12,7 @@ console.log('====');
 let isStillPlaying = true;
 while (isStillPlaying) {
     printGameMenu()
-    let userOption = Number(getUserInput())
+    let userOption = Number(getUserNumber())
     if (userOption === 0) {
         // Conditional change trigger
         isStillPlaying = false;

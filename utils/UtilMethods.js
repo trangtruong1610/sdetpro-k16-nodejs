@@ -77,8 +77,12 @@ function sortNumberDESC(num1, num2) {
     return num2 - num1;
 }
 
-function getUserInput() {
-    return readline.question("Please input: ");
+function getUserNumber() {
+    return Number(readline.question("Please input your number: "));
+}
+
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 10 + 1)
 }
 // Common JS module
 module.exports = {
@@ -91,5 +95,6 @@ module.exports = {
     deleteElementFromArray,
     sortNumberASC,
     sortNumberDESC,
-    getUserInput
+    getUserNumber,
+    generateRandomNumber
 };
