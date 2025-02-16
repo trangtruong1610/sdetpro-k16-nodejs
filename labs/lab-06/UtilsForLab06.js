@@ -4,11 +4,12 @@ function getResponse(rawResponse) {
     return rawResponse.json();
 }
 
-function findPost(response, inputUserID) {
+function findPost(response) {
+    const inputUserID = getUserID();
     const userPosts = response.filter(data => data.userId === inputUserID);
 
     if (userPosts.length > 0) {
-        const postID = Number(readline.question("Please input your post ID: "));
+        const postID = getPostID();
         const foundPost = userPosts.find(data => data.id === postID);
         foundPost
             ? console.log(foundPost)
@@ -17,18 +18,27 @@ function findPost(response, inputUserID) {
     return console.log("User ID Not found with user ID: " + inputUserID);
 }
 
-
-function sendRequest(url) {
-    return fetch(url);
-}
-
-function getAllRelatedPost(response, inputUserID) {
+function getAllRelatedPost(response) {
+    const inputUserID = getUserID();
     const relatedPosts = response.filter(post => post.userId === inputUserID);
     relatedPosts.length > 0
         ? console.log(relatedPosts)
         : console.log("Can't find related posts with user ID: " + inputUserID);
 
 }
+
+function getUserOption() {
+    return Number(readline.question("Please input your choice: "));
+}
+
+function getUserID() {
+    return Number(readline.question("Please input user ID: "));
+}
+
+function getPostID() {
+    return Number(readline.question("Please input post ID: "));
+}
+
 
 function printTheAppMenu() {
     console.log('=== MENU===\n ' +
@@ -42,6 +52,6 @@ module.exports = {
     printTheAppMenu,
     findPost,
     getResponse,
-    sendRequest,
     getAllRelatedPost,
+    getUserOption,
 };

@@ -1,33 +1,35 @@
 const readline = require("readline-sync");
-const {findPost, sendRequest, getResponse, getAllRelatedPost, printTheAppMenu} = require("./UtilsForLab06");
+const {findPost, getResponse, getAllRelatedPost, printTheAppMenu, getUserOption} = require("./UtilsForLab06");
 
 
 const url = 'https://jsonplaceholder.typicode.com/todos';
 
-menuApp();
+fetch(url)
+    .then(getResponse)
+    .then(function (response) {
+        let RETRY_TIMES = 0;
+        const MAX_RETRY_TIMES = 3;
+        let isInteracting = true;
 
-function menuApp() {
-    printTheAppMenu();
-    const userOption = Number(readline.question("Please input your choice: "));
-    switch (userOption) {
-        case 1:
-            const inputUserID = Number(readline.question("Please input user ID: "));
-            sendRequest(url).then(function (response) {
-                return getResponse(response);
-            }).then(function (response) {
-                return findPost(response, inputUserID);
-            });
-            break;
-        case 2:
-            const userId = Number(readline.question("Please input user ID: "));
-            sendRequest(url).then(function (response) {
-                return getResponse(response);
-            }).then(function (response) {
-                return getAllRelatedPost(response, userId);
-            });
-            break;
-        case 0:
-            break;
-    }
-}
+        while (isInteracting && MAX_RETRY_TIMES > RETRY_TIMES) {
+            printTheAppMenu();
+            const userOption = getUserOption();
+            switch (userOption) {
+                case 1:
+                    findPost(response);
+                    break;
+                case 2:
+                    getAllRelatedPost(response);
+                    break;
+                case 0:
+                    isInteracting = false;
+                    break;
+                default:
+                    console.log("Invalid option");
+                    RETRY_TIMES++;
+
+            }
+        }
+    });
+
 
