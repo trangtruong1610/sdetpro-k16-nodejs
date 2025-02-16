@@ -73,6 +73,7 @@ function deleteElementFromArray(arr, i) {
 function sortNumberASC(num1, num2) {
     return num1 - num2;
 }
+
 function sortNumberDESC(num1, num2) {
     return num2 - num1;
 }
@@ -82,32 +83,10 @@ function getUserNumber() {
 }
 
 function generateRandomNumber() {
-    return Math.floor(Math.random() * 10 + 1)
+    return Math.floor(Math.random() * 10 + 1);
 }
 
-function getResponse(rawResponse) {
-    return rawResponse.json();
-}
 
-function findUserByUserId(users, inputUserID){
-    for (const user of users) {
-        if (user.userId === inputUserID) {
-            const postId = Number(readline.question("Please input your post ID: "));
-            if (user.id === postId) {
-                console.log(user);
-                return;
-            } else {
-                console.log("Post is invalid");
-                return;
-            }
-        }
-    }
-    console.log("User not found");
-}
-
-function sendRequest(url) {
-    return fetch(url);
-}
 // Common JS module
 module.exports = {
     isEventNumber,
@@ -123,5 +102,6 @@ module.exports = {
     generateRandomNumber,
     findUserByUserId,
     getResponse,
-    sendRequest
+    sendRequest,
+    getAllRelatedWithUserId,
 };
