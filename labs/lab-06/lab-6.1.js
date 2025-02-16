@@ -1,5 +1,5 @@
 const readline = require("readline-sync");
-const {findUserByUserId,sendRequest, getResponse} = require("../../utils/UtilMethods");
+const {findPost, sendRequest, getResponse, getAllRelatedPost, printTheAppMenu} = require("./UtilsForLab06");
 
 
 const url = 'https://jsonplaceholder.typicode.com/todos';
@@ -14,31 +14,20 @@ function menuApp() {
             const inputUserID = Number(readline.question("Please input user ID: "));
             sendRequest(url).then(function (response) {
                 return getResponse(response);
-            }).then(function (users) {
-                return findUserByUserId(users, inputUserID);
+            }).then(function (response) {
+                return findPost(response, inputUserID);
             });
             break;
         case 2:
-            const postId = Number(readline.question("Please input your post ID: "));
-            sendRequest(`${url}/${postId}`).then(function (response) {
+            const userId = Number(readline.question("Please input user ID: "));
+            sendRequest(url).then(function (response) {
                 return getResponse(response);
             }).then(function (response) {
-                if (response.id === postId) {
-                    console.log(response);
-                } else {
-                    console.log("Post Id not found");
-                }
+                return getAllRelatedPost(response, userId);
             });
             break;
         case 0:
             break;
     }
-}
-
-function printTheAppMenu() {
-    console.log('=== MENU===\n ' +
-        '1. Get Post Content\n ' +
-        '2. Print all the related posts\n ' +
-        '0. Exit the program');
 }
 
