@@ -84,6 +84,30 @@ function getUserNumber() {
 function generateRandomNumber() {
     return Math.floor(Math.random() * 10 + 1)
 }
+
+function getResponse(rawResponse) {
+    return rawResponse.json();
+}
+
+function findUserByUserId(users, inputUserID){
+    for (const user of users) {
+        if (user.userId === inputUserID) {
+            const postId = Number(readline.question("Please input your post ID: "));
+            if (user.id === postId) {
+                console.log(user);
+                return;
+            } else {
+                console.log("Post is invalid");
+                return;
+            }
+        }
+    }
+    console.log("User not found");
+}
+
+function sendRequest(url) {
+    return fetch(url);
+}
 // Common JS module
 module.exports = {
     isEventNumber,
@@ -96,5 +120,8 @@ module.exports = {
     sortNumberASC,
     sortNumberDESC,
     getUserNumber,
-    generateRandomNumber
+    generateRandomNumber,
+    findUserByUserId,
+    getResponse,
+    sendRequest
 };
