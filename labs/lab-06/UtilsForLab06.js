@@ -14,6 +14,7 @@ function findPost(response) {
         foundPost
             ? console.log(foundPost)
             : console.log("Can't find post with post ID: " + postID);
+        return;
     }
     return console.log("User ID Not found with user ID: " + inputUserID);
 }
