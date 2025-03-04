@@ -5,6 +5,7 @@
  */
 
 const url = 'taolaobidao';
+// Thenable chain
 sendRequest(url).then(function (response) {
     return processResponse(response);
 }).then(function (statusCode) {
