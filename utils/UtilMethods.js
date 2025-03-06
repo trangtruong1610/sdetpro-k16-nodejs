@@ -4,25 +4,22 @@
 
 // 4 : argument
 const readline = require("readline-sync");
-let isEvenNumber_ = isEventNumber(4);
+// let isEvenNumber_ = isEventNumber(4);
 // console.log(`Is even number : ${isEvenNumber_}`);
 
 
 // number : parameter
-function isEventNumber(number) {
-    return number % 2 === 0;
-}
+const isEventNumber = (number) => number % 2 === 0;
 
-function isOddNumber(number) {
-    return number % 2 !== 0;
-}
+
+const isOddNumber = (number) => number % 2 !== 0;
 
 
 function findMaxNumber(array) {
     let isMaxNumber = array[0];
-    for (let i = 0; i < array.length; i++) {
-        if (isMaxNumber < array[i]) {
-            isMaxNumber = array[i];
+    for (let num of array) {
+        if (isMaxNumber < num) {
+            isMaxNumber = num;
         }
     }
     return isMaxNumber;
@@ -30,9 +27,9 @@ function findMaxNumber(array) {
 
 function findMinNumber(array) {
     let isMinNumber = array[0];
-    for (let i = 0; i < array.length; i++) {
-        if (isMinNumber > array[i]) {
-            isMinNumber = array[i];
+    for (let num of array) {
+        if (isMinNumber > num) {
+            isMinNumber = num;
         }
     }
     return isMinNumber;
@@ -100,8 +97,4 @@ module.exports = {
     sortNumberDESC,
     getUserNumber,
     generateRandomNumber,
-    findUserByUserId,
-    getResponse,
-    sendRequest,
-    getAllRelatedWithUserId,
 };
