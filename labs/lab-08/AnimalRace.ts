@@ -1,9 +1,10 @@
-import AnimalController  from "./AnimalController";
-import Animal from "./Animal";
+import AnimalController from "./AnimalController";
+import Dog from "./Dog";
+import Tiger from "./Tiger";
+import Horse from "./Horse";
 
-const dog = new Animal("Dog", 60)
-const tiger = new Animal("Tiger", 100);
-const horse = new Animal("Horse", 75);
-
-const animalRace = new AnimalController();
-animalRace.findWinner([dog, tiger, horse]);
+const dog = new Dog()
+const tiger = new Tiger();
+const horse = new Horse();
+const animalController = new AnimalController();
+animalController.findWinner([dog, tiger, horse]);
