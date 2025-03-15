@@ -1,5 +1,5 @@
 - Contract Employee
-- FTE
+- Employee
 
 ## Properties:
 - name
