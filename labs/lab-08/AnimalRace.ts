@@ -6,5 +6,5 @@ import Horse from "./Horse";
 const dog = new Dog()
 const tiger = new Tiger();
 const horse = new Horse();
-const animalController = new AnimalController();
-animalController.findWinner([dog, tiger, horse]);
+let winner = AnimalController.findWinner([dog, tiger, horse]);
+console.log("Winner is", winner.getName(), "with speed", winner.getSpeed());
