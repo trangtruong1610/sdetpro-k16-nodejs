@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var FTE_1 = require("./FTE");
+var Contractor_1 = require("./Contractor");
+var EmployeeController_1 = require("./EmployeeController");
+var PartTimeEmployee_1 = require("./PartTimeEmployee");
+var teo = new FTE_1.default();
+var ti = new Contractor_1.default();
+var tun = new PartTimeEmployee_1.default();
+var totalSalary = EmployeeController_1.default.getTotalSalary([teo, ti, tun]);
+console.log("Total salary: ".concat(totalSalary));
