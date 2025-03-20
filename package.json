@@ -1,10 +1,11 @@
 {
+  "type": "module",
   "dependencies": {
     "readline-sync": "^1.4.10",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.19.3"
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
+    "tsx": "^4.19.3",
     "typescript": "^5.8.2"
   },
   "scripts": {
