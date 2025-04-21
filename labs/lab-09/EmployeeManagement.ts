@@ -1,16 +1,29 @@
 import FTE from "./FTE";
-import EmployeeController from "./EmployeeController";
 import Contractor from "./Contractor";
+import EmployeeController from "./EmployeeController";
+import Employee from "./Employee";
+import {ASC, DESC} from "./SortRuleTypes";
 
-let FTE1 = new FTE('Full Time Employee 1')
-let FTE2 = new FTE('Full Time Employee 2')
-let FTE3 = new FTE('Full Time Employee 3')
-let Contractor1 = new Contractor('Contractor 1')
-let Contractor2 = new Contractor('Contractor 2')
+const fteNumber = 3
+const contractorNumber = 2
+let fteEmployees: Employee[] = [];
+let contractorEmployees: Employee[] = [];
 
-let totalSalary = EmployeeController.getTotalSalary([FTE1, FTE2, FTE3, Contractor1, Contractor2])
-console.log(`Total salary: ${totalSalary}`)
-let minSalary = EmployeeController.getMinSalary([FTE1, FTE2, FTE3, Contractor1, Contractor2])
-console.log(`Employee name ${minSalary.getName()} with min salary: ${minSalary.getSalary()}`)
-let maxSalary = EmployeeController.getMaxSalary([FTE1, FTE2, FTE3, Contractor1, Contractor2])
-console.log(`Employee name ${maxSalary.getName()} with max salary: ${maxSalary.getSalary()}`)
+for(let fteIndex = 0; fteIndex < fteNumber; fteIndex++){
+    fteEmployees.push(new FTE(`FTE_${fteIndex + 1}`));
+}
+
+for(let contractorIndex = 0; contractorIndex < contractorNumber; contractorIndex++){
+    contractorEmployees.push(new Contractor(`Contractor_${contractorIndex + 1}`));
+}
+
+const controller = new EmployeeController();
+const employeeList = fteEmployees.concat(contractorEmployees);
+
+let totalSalary = controller.getTotalSalary(employeeList);
+console.log(`Total Salary: ${totalSalary}`);
+
+let sortByNameASC = controller.sortByName(employeeList, ASC);
+let sortByNameDESC = controller.sortByName(employeeList, DESC);
+console.log(`Sort by name ASC: ${JSON.stringify(sortByNameDESC)}`);
+console.log(`Sort by name ASC: ${JSON.stringify(sortByNameASC)}`);

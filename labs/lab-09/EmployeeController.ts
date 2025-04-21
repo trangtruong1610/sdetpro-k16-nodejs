@@ -1,14 +1,15 @@
 import Employee from "./Employee";
+import {ASC, DESC} from "./SortRuleTypes";
 
 export default class EmployeeController{
-    static getTotalSalary(employees: Employee[]): number{
+    getTotalSalary(employees: Employee[]): number{
         let totalSalary = 0;
         for(let employee of employees){
             totalSalary += employee.getSalary();
         }
         return totalSalary;
     }
-    static getMinSalary(employees: Employee[]): Employee{
+    getMinSalary(employees: Employee[]): Employee{
         let minSalaryEmp = employees[0];
         for(let employee of employees){
             if(employee.getSalary() < minSalaryEmp.getSalary()){
@@ -17,7 +18,7 @@ export default class EmployeeController{
         }
         return minSalaryEmp;
     }
-    static getMaxSalary(employees: Employee[]): Employee{
+    getMaxSalary(employees: Employee[]): Employee{
         let maxSalaryEmp = employees[0];
         for(let employee of employees){
             if(employee.getSalary() > maxSalaryEmp.getSalary()){
@@ -25,5 +26,33 @@ export default class EmployeeController{
             }
         }
         return maxSalaryEmp;
+    }
+
+    sortByName(employeeList : Employee[], rule: string): Employee[]{
+        const copy = [...employeeList];
+        if(rule === ASC){
+            return copy.sort((a, b) => a.getName().localeCompare(b.getName()));
+        }else if(rule === DESC){
+            return copy.sort((a, b) => b.getName().localeCompare(a.getName()));
+        }else {
+            this.throwInvalidSortRule()
+            return copy;
+        }
+    }
+
+    sortBySalary(employeeList : Employee[], rule: string): Employee[]{
+        const copy = [...employeeList];
+        if(rule === ASC){
+            return copy.sort((a, b) => a.getSalary() - b.getSalary());
+        }else if(rule === DESC){
+            return copy.sort((a, b) => b.getSalary() - a.getSalary());
+        }else {
+            this.throwInvalidSortRule()
+            return copy;
+        }
+    }
+
+    private throwInvalidSortRule(){
+        throw new Error("Invalid sort rule");
     }
 }

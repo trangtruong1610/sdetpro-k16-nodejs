@@ -1,16 +1,19 @@
 
-export default class Employee {
+export default abstract class Employee {
     protected name: string;
     protected salary: number;
 
-    constructor(name: string, maxSalary: number) {
+    constructor(name: string) {
         this.name = name;
-        this.salary = Math.floor(Math.random() * maxSalary);
     }
+
     getName(){
         return this.name;
     }
+    abstract setSalary(): void
+
     getSalary(){
         return this.salary;
     }
+
 }
